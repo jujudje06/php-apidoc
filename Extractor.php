@@ -79,7 +79,7 @@ class Extractor
     public static function getAllClassAnnotations($className)
     {
         $class = new \ReflectionClass($className);
-
+		self::$annotationCache = [];
         foreach ($class->getMethods() as $object) {
             self::$annotationCache['annotations'][$className][$object->name] = self::getMethodAnnotations($className, $object->name);
         }
